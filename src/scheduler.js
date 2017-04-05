@@ -1,3 +1,6 @@
+/**
+ * Creates an instance of the mlfq scheduler
+ */
 
 import Scheduler from "./mlfq";
 
@@ -8,7 +11,7 @@ const scheduler = new Scheduler({
     boostTime: Infinity,
     resetTQsOnIO: false,
     random,
-    speed: 1,
+    speed: 3000,
     generation: [
         {
             ioFrequencyRange: [1, 1],

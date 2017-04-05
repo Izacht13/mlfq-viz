@@ -17,14 +17,14 @@ const props = {
         },
         label: "IO Frequency",
         calcDomain(scheduler) {
-            return [0,d3.max(scheduler.allJobs, d => d.init.ioFreq)]
+            return [d3.max(scheduler.allJobs, d => d.init.ioFreq), 0]
         }
     },
     [".init.runTime"]: {
         access(d) {
             return d.init.runTime;
         },
-        label: "Run Time",
+        label: "Job Run Time",
         calcDomain(scheduler) {
             return [0, d3.max(scheduler.allJobs, d => d.init.runTime)]
         }
@@ -33,7 +33,7 @@ const props = {
         access(d) {
             return d.init.createTime;
         },
-        label: "Create Time",
+        label: "Job Run Time",
         calcDomain(scheduler) {
             return [0, d3.max(scheduler.allJobs, d => d.init.createTime)]
         }
@@ -100,9 +100,9 @@ export function accessorFactoryFactory() {
  * @param props to combine 
  */
 function *getCombinations2(props) {
-    for (let i = 0; i < props.length; i++) {        
-        for (let j=0 ; j<=i; j++) {
-            yield [props[j], props[i]];
+    for (let i = 0; i < props.length - 1; i++) {        
+        for (let j = i + 1; j < props.length; j++) {
+            yield [props[i], props[j]];
         }
     }
 }
