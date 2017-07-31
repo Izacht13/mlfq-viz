@@ -31,8 +31,8 @@ svg {
    border: 0px solid grey;
    g.queueGroup {
        rect.queue {
-          stroke-width: $border;
-          stroke: grey;
+          stroke-width: 5px;
+          stroke: #EEE;
        }
        text.label {
            font-size: 40px;
